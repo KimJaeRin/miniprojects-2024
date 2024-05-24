@@ -7,6 +7,8 @@ import RPi.GPIO as GPIO
 import adafruit_dht
 import board
 import time
+import datetime as dt
+import json
 
 red_pin = 4
 green_pin = 6
@@ -51,7 +53,15 @@ while True:
         temp = dhtDevice.temperature
         humd =dhtDevice.humidity
         print(f'{loop_num} - temp:{temp}/humid:{humd}')
-        mqttc.publish('PKNU/data', humd)
+
+        origin_data = { 'DEV_ID' : dev_id,
+                        'CURR_DT' : dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                        'TYPE' : 'TEMPHUMID', 
+                        'VALUE' : f'{temp}|{humd}'
+                        }
+        pub_data = json.dumps(origin_data, ensure_ascii=False)
+
+        mqttc.publish('PKNU/data/', pub_data)
         loop_num += 1
     except RuntimeError as ex:
         print(ex.args[0])
