@@ -89,23 +89,44 @@ https://www.figma.com/ 피그마
     - 프로젝트 결정사항 공유
     - 발표자료 준비
 
-## 6일차
-- 네트워크 대공사
-    [x] 개인공유기, PC, 라즈베리파이
-
-- 스마트홈 연동 클래스 미니프로젝트
-    - 온습도 센서, RGB LED
-    - RPi <--> Windows 통신(MQTT)
-    - WPF 모니터링 앱
-
-- IoT 기기간 통신방법
-    - Modbus : 시리얼통신으로 데이터 전송(구식)
-    - OPC UA : Modbus 통신 불편한 점 개선(복잡)
-    - **MQTT** : AWS IoT, Azure IoT 클라우드 산업계 표준으로 사용(가장 편리)
+## 6, 7일차
+- OPC UA - Modbus통신 불편한점 개선(아주 복잡)
+    - **MQTT** - 가장 편리! AWS IOT, Azure IoT 클라우드 산업계표준으로 사용
 
 - MQTT 통신
-    - Mosquitto Broker 설치
-        - mosquitto.conf : listener 1883 0.0.0.0, allow_anonymous true
-        - 방화벽 인바운드 열기
-    - RPi : paho-mqtt 패키지 설치, 송신(publisher)
-    - Win : MQTT.NET Nuget패키지 설치, 수신(subscriber)
+    - [x] Mosquitto Broker 설치
+    - mosquitto.conf : listener 1883 0.0.0.0, allow_anonymous true
+    - 방화벽 인바운드 열기
+    - [x] RPi : paho-mqtt 패키지 설치, 송신(publisher)
+    - [ ] Win/C# : MQTT Nuget패키지 설치, 수신(subcriber)
+    - M2Mqtt : 가볍게 쓸수 있음. 업데이트가 안됨.
+    - MQTTNet : MS에서 개발, 무겁다. 최신까지 업데이트 잘됨
+
+## 9일차
+- 스마트홈 연동 클래스 미니프로젝트
+    - [x] WPF 수신 MQTT데이터 DB로 저장
+    - [x] MQTT데이터 실시간 모니터링 - 온도
+    - [ ] MQTT로 RPi 제어(LED제어)
+    - [ ] WPF MQTT데이터 히스토리 확인
+
+## 10일차
+- 스마트홈 연동 클래스 미니프로젝트 마무리
+    - [x] WPF 수신 MQTT데이터 DB로 저장
+    - [x] MQTT데이터 실시간 모니터링 - 습도
+    - [x] MQTT로 RPi 제어(LED제어)
+    - [x] WPF MQTT데이터 히스토리 확인
+        -LiveChart2는 차후에 다시, 현재는 OxyPlot 차트
+
+    - 실행결과
+
+        ![스마트홈1](https://github.com/KimJaeRin/miniprojects-2024/blob/main/images/mp002.png)
+
+        ![스마트홈2](https://github.com/KimJaeRin/miniprojects-2024/blob/main/images/mp003.png)
+
+        ![스마트홈3](https://github.com/KimJaeRin/miniprojects-2024/blob/main/images/mp004.png)
+
+
+        
+
+- 조별 미니프로젝트 발표
+    - 1~5조 까지
